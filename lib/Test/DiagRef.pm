@@ -12,6 +12,9 @@ BEGIN {
     *diag = \&Test::More::diag;
 }
 
+use Exporter 'import';
+our @EXPORT = 'diag_ref';
+
 sub diag_ref ($)
 {
     my $ref = shift;
