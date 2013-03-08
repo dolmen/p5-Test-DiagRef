@@ -53,9 +53,55 @@ Test::DiagRef - Detailed diagnostics for your reference tracking tests
     weaken(my $ref = $obj);
 
     # Delete $obj
-    undef $obj;
+    undef $obj; # Uncomment this line to show a leak
 
-    is($ref, undef, 'no leak') or diag_ref;
+    is($ref, undef, 'no leak') or diag_ref $ref;
+
+=head1 DESCRIPTION
+
+L<Test::DiagRef> is an utility module for writing tests for memory
+leaks. It will not check for memory leaks himself (that's your job as a test
+author), but at least provide an advanced report if your test found one.
+
+The only sub exported is C<diag_ref($ref)>. It is expected to be used where
+L<Test::More>'s C<diag> is used: to provide advanced diagnostics when a test
+failed. The given C<$ref> will be explored.
+
+L<Devel::FindRef> is the module that provides the detailed report. But it is
+loaded on demand, only if C<$ref> is defined. This saves ressources if your
+test did not detect a leak.
+
+The runtime dependency on C<Devel::FindRef> is optional. If it is not
+installed when the test found a leak, C<diag_ref> will just report a message
+suggesting to install it. This ensures that using C<Test::DiagRef> has low
+dependancy impact on your own CPAN (or DarkPAN) distribution. You can safely
+use C<Test::DiagRef> for development, and still keep it in the test suite of
+the distribution.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item *
+
+L<Devel::FindRef>
+
+=item *
+
+The C<diag> sub in L<Test::More>.
+
+=back
+
+=head1 AUTHOR
+
+Olivier Mengué, L<mailto:dolmen@cpan.org>
+
+=head1 COPYRIGHT & LICENCE
+
+Copyright E<copy> 2013 Olivier MenguE<eacute>.
+
+This library is free software; you can redistribute it and/or modify it under
+the same terms as Perl 5 itself.
 
 =cut
 
