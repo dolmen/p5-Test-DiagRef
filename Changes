@@ -1,6 +1,9 @@
 Revision history for Test::DiagRef.
 
 {{$NEXT}}
+        Fixed Changes file from latest release. Kwalitee should be now ok.
+
+0.131020    2013-04-12    DOLMEN (Olivier Mengué)
 	No code changes.
 	Added 'Changes' file.
 	Added metadata (repo, bugtracker).
