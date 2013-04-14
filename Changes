@@ -1,6 +1,8 @@
 Revision history for Test::DiagRef.
 
 {{$NEXT}}
+
+1.131040     2013-04-14    DOLMEN (Olivier Mengué)
         Fixed Changes file from latest release. Kwalitee should be now ok.
 
 0.131020    2013-04-12    DOLMEN (Olivier Mengué)
