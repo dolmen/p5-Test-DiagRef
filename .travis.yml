@@ -1,0 +1,21 @@
+language: perl
+perl:
+    - "5.10"
+    - "5.12"
+    - "5.14"
+    - "5.16"
+    - "5.18"
+# Modules nécessaire pour le mode auteur (Build update)
+# TODO utiliser "./Build installdeps" car on l'a surchargé pour les
+#      dépendances auteur
+before_install:
+    - cpanm Dist::Zilla::App::Command::xtest || { cat ~/.cpanm/build.log ; false
+ ; }
+    # Test::Kwalitee indépendant car il est long à installer et Travis-CI
+    # limite le temps d'exécution d'une commande à 15 mn
+    - cpanm --notest Test::Kwalitee
+    - dzil authordeps --missing | cpanm || { cat ~/.cpanm/build.log ; false ; }
+    - dzil listdeps --author --missing | cpanm || { cat ~/.cpanm/build.log ; fal
+se ; }
+script:
+    - dzil test --author --release
