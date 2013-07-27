@@ -3,17 +3,14 @@ use warnings;
 package Test::DiagRef;
 # ABSTRACT: detailed diagnostics for your reference tracking tests
 
-use Exporter;
-our @EXPORT_OK = 'diag_ref';
+use Exporter 5.57 'import';
+our @EXPORT = 'diag_ref';
 
 use Test::More ();
 
 BEGIN {
     *diag = \&Test::More::diag;
 }
-
-use Exporter 'import';
-our @EXPORT = 'diag_ref';
 
 sub diag_ref ($)
 {
