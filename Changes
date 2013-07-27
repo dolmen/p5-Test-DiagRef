@@ -1,6 +1,7 @@
 Revision history for Test::DiagRef.
 
 {{$NEXT}}
+	Fix duplicate Exporter use.	
 
 1.131040    2013-04-14    DOLMEN (Olivier Mengué)
         Fixed Changes file from latest release. Kwalitee should be now ok.
