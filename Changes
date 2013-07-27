@@ -1,6 +1,8 @@
 Revision history for Test::DiagRef.
 
 {{$NEXT}}
+
+1.132080    2013-07-27    DOLMEN (Olivier Mengué)
 	Fix duplicate Exporter use.	
 
 1.131040    2013-04-14    DOLMEN (Olivier Mengué)
