@@ -81,6 +81,10 @@ the distribution.
 
 =item *
 
+L<Test::LeakTrace>
+
+=item *
+
 L<Devel::FindRef>
 
 =item *
